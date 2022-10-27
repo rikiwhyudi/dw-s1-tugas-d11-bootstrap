@@ -1,0 +1,65 @@
+.form-container {
+  display: flex;
+  margin: 6.25em auto;
+  justify-content: center;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f3f3;
+  flex-basis: 25%;
+  padding: 1.2em 1.8em;
+  border-radius: 0.5em;
+}
+
+.form-input > h3 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.colm-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.colm-group input,
+textarea {
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  border-radius: 0.5em;
+  border: none;
+  resize: none;
+}
+
+#input-name,
+textarea {
+  text-transform: capitalize;
+}
+
+.row-group {
+  display: flex;
+  gap: 0.6em;
+  margin-bottom: 0.5em;
+}
+
+.row-group input,
+select {
+  width: 180px;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: none;
+}
+
+label {
+  font-size: 0.9em;
+  font-weight: bolder;
+}
+
+.send {
+  margin-top: 0.6em;
+}

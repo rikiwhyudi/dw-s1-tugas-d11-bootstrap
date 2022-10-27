@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Tugas ke 11</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../public/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../public/img/brandred.png"
+            alt="Brand"
+            width="30"
+            height="24"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">Add Project</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mb-2 mb-lg-0 me-2">
+            {{if .Data.IsLogin}}
+            <li class="nav-item navbar-brand">Hello, {{.Data.UserName}}</li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="/form-register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/form-login">Login</a>
+            </li>
+            {{end}}
+          </ul>
+          <a href="/contact" class="btn btn-dark btn-sm">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+    {{if .Data.FlashData}}
+    <div class="container mt-3 alert alert-success" role="alert">
+      <strong>{{.Data.FlashData}}</strong>
+    </div>
+    {{end}}
+    <div class="centent">
+      <div class="container d-sm-flex py-5">
+        <div class="bg-light shadow d-flex px-5 rounded">
+          <div
+            class="d-lg-flex align-items-center justify-content-between gap-5"
+          >
+            <div class="flex-column py-4" style="text-align: justify">
+              <h4>Hi welcome to my hut.</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                neque quibusdam vero aspernatur quidem error recusandae quisquam
+                accusamus animi sit est iusto sapiente quis, commodi deleniti
+                nemo laboriosam delectus consectetur placeat quas aut repellat
+                reprehenderit eveniet? Reprehenderit eos, voluptates dolores
+                impedit tempora nesciunt delectus fugit blanditiis quod sit rem
+                asperiores!
+              </p>
+              <div class="d-sm-flex gap-3 align-items-center">
+                <a href="/contact" class="btn btn-dark btn-sm">contact</a>
+                <a href="#" class="text-decoration-none text-dark"
+                  >download CV <i class="fa-solid fa-download"></i
+                ></a>
+              </div>
+              <div class="d-flex gap-3 mb-3 mt-5">
+                <a href="#" class="text-decoration-none text-dark"
+                  ><i class="fa-brands fa-linkedin fa-2xl"></i
+                ></a>
+                <a href="#" class="text-decoration-none text-dark"
+                  ><i class="fa-brands fa-square-instagram fa-2xl"></i
+                ></a>
+                <a href="#" class="text-decoration-none text-dark"
+                  ><i class="fa-brands fa-square-facebook fa-2xl"></i
+                ></a>
+                <a href="#" class="text-decoration-none text-dark"
+                  ><i class="fa-brands fa-square-twitter fa-2xl"></i
+                ></a>
+              </div>
+            </div>
+            <div
+              class="flex-column text-center rounded overflow-hidden my-5 shadow"
+              style="flex-basis: 100%"
+            >
+              <img
+                src="../public/img/vicky-unsplash.jpg"
+                class="mb-2"
+                style="object-fit: cover; width: 100%; height: 20rem"
+              />
+              <h5 class="d-inline">Riki Wahyudi</h5>
+              <p style="font-size: 12px">Fullstack developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{if .Data.IsLogin}}
+    <div class="bg-light">
+      <div class="container d-flex justify-content-center">
+        <div class="flex-column my-5">
+          <h3
+            class="text-center pb-3 mb-4"
+            style="border-bottom: 2px solid #ddd"
+          >
+            My Project
+          </h3>
+          <div class="d-sm-flex justify-content-center flex-wrap gap-3">
+            {{range $index, $data := .Blogs}}
+            <div class="card mb-3 d-lg-flex">
+              <img
+                src="../public/img/{{$data.Images}}"
+                class="card-img-top"
+                alt="images"
+                height="200px"
+                style="object-fit: cover"
+              />
+              <div class="card-body">
+                <h5
+                  style="
+                    width: 170px;
+                    height: 20px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                  "
+                  class="fs-6"
+                >
+                  <a
+                    href="blog-detail/{{$data.Id}}"
+                    target="_blank"
+                    class="text-decoration-none text-dark"
+                    >{{$data.Title}}</a
+                  >
+                </h5>
+                <p style="font-size: 13px">Duration: {{$data.Duration}}</p>
+                <p
+                  style="
+                    font-size: 12px;
+                    width: 250px;
+                    height: 20px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                  "
+                >
+                  {{$data.Content}}
+                </p>
+                <div class="d-sm-flex gap-3 mb-2">
+                  <a href="#" class="text-dark">
+                    <i class="fa-brands fa-google-play fa-md"></i>
+                  </a>
+                  <a href="#" class="text-dark">
+                    <i class="fa-brands fa-android fa-md"></i>
+                  </a>
+                  <a href="#" class="text-dark">
+                    <i class="fa-brands fa-java fa-md"></i>
+                  </a>
+                </div>
+                <div>
+                  <p style="display: inline; font-size: 12px">
+                    Article ID: {{$data.Id}}
+                  </p>
+                  <p style="font-size: 12px">
+                    {{$data.SFormat_date}} ~ {{$data.Author}}
+                  </p>
+                </div>
+                <div class="button footer">
+                  <a href="#" class="btn btn-dark btn-sm" style="width: 50%"
+                    >edit</a
+                  >
+                  <a
+                    href="/delete/{{$data.Id}}"
+                    class="btn btn-dark btn-sm"
+                    style="width: 48%"
+                    >delete</a
+                  >
+                </div>
+              </div>
+            </div>
+            {{end}}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div></div>
+    {{end}}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

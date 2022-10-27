@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/form.css" />
+    <title>Contact Me</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../public/img/brandred.png"
+            alt="Brand"
+            width="30"
+            height="24"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">Add Project</a>
+            </li>
+          </ul>
+          <a href="/" class="btn btn-dark btn-sm">Home</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container d-lg-flex justify-content-center my-5">
+      <form
+        action="#"
+        class="form-control pb-4 px-5 rounded-4"
+        style="flex-basis: 50%"
+      >
+        <div class="my-3 text-center">
+          <h4>GET IN TOUCH</h4>
+        </div>
+        <div class="mb-3">
+          <label for="input-name"><b>Name:</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="input-name"
+            placeholder="John Doe"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="input-email"><b>Email:</b></label>
+          <input
+            type="email"
+            class="form-control"
+            id="input-email"
+            placeholder="example@mail.com"
+            required
+          />
+        </div>
+        <div class="row g-2 mb-3">
+          <div class="col-md">
+            <label for="input-phone"><b>Phone Number:</b></label>
+            <input
+              type="tel"
+              class="form-control"
+              id="input-phone"
+              placeholder="087771234567"
+              required
+            />
+          </div>
+          <div class="col-md">
+            <label for="input-subject"><b>Subject:</b></label>
+            <select id="input-subject" class="form-select" required>
+              <option value="" hidden>Select</option>
+              <option value="FrontEnd">FrontEnd</option>
+              <option value="BackEnd">BackEnd</option>
+              <option value="Fullstack">Fullstack</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="input-message"><b>Message:</b></label>
+          <textarea
+            class="form-control"
+            id="input-message"
+            rows="4"
+            style="resize: none"
+            placeholder="Send message..."
+            required
+          ></textarea>
+        </div>
+        <div class="d-grid">
+          <button onclick="showData()" class="btn btn-dark" type="submit">
+            submit
+          </button>
+        </div>
+      </form>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../public/js/script.js"></script>
+  </body>
+</html>
