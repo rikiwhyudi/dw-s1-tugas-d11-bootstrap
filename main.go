@@ -401,6 +401,17 @@ func edit(w http.ResponseWriter, r *http.Request) {
 	var content = r.PostForm.Get("inputContent")
 	var start = r.PostForm.Get("inputStart")
 	var end = r.PostForm.Get("inputEnd")
+	var nodejs = r.PostForm.Get("nodejs")
+	var nextjs = r.PostForm.Get("nextjs")
+	var reactjs = r.PostForm.Get("reactjs")
+	var typescript = r.PostForm.Get("typescript")
+	
+	var technologies = []string{
+		nodejs,
+		nextjs,
+		reactjs,
+		typescript,
+	} 
 
 	id, _ := strconv.Atoi(mux.Vars(r)["id"])
 	dataContex := r.Context().Value("dataFile")
@@ -410,7 +421,7 @@ func edit(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "SESSION_KEY")
 	// author := session.Values["Id"].(int)
 
-	_, err = connection.Conn.Exec(context.Background(), "UPDATE tb_projects SET title=$1, start_date=$2, end_date=$3, description=$4, image=$5 WHERE id=$6" , title, start, end, content, image, id)
+	_, err = connection.Conn.Exec(context.Background(), "UPDATE tb_projects SET title=$1, start_date=$2, end_date=$3, description=$4, image=$5, technologies=$6 WHERE id=$7" , title, start, end, content, image, technologies, id)
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)

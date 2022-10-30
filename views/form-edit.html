@@ -132,49 +132,29 @@
         <div class="d-block">
           <p class="form-label"><b>Technologies:</b></p>
           <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="nodejs"
-              value="nodejs"
-              name="nodejs"
-              disabled
-            />
+            <input class="form-check-input" type="checkbox" id="nodejs"
+            value="nodejs" name="nodejs" {{if eq (index .Blogs.Technologies 0)
+            "nodejs"}} checked {{end}} />
             <label class="form-check-label" for="nodejs">Node Js&nbsp;</label>
           </div>
           <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="nextjs"
-              value="nextjs"
-              name="nextjs"
-              disabled
-            />
+            <input class="form-check-input" type="checkbox" id="nextjs"
+            value="nextjs" name="nextjs" {{if eq (index .Blogs.Technologies 1)
+            "nextjs"}} checked {{end}} />
             <label class="form-check-label" for="nextjs">Next Js</label>
           </div>
 
           <div>
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="reactjs"
-                value="reactjs"
-                name="reactjs"
-                disabled
-              />
+              <input class="form-check-input" type="checkbox" id="reactjs"
+              value="reactjs" name="reactjs" {{if eq (index .Blogs.Technologies
+              2) "reactjs"}} checked {{end}} />
               <label class="form-check-label" for="reactjs">React Js</label>
             </div>
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="typescript"
-                value="typescript"
-                name="typescript"
-                disabled
-              />
+              <input class="form-check-input" type="checkbox" id="typescript"
+              value="typescript" name="typescript" {{if eq (index
+              .Blogs.Technologies 3) "reactjs"}} checked {{end}} />
               <label class="form-check-label" for="typescript"
                 >Typescript</label
               >
