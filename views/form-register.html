@@ -59,11 +59,28 @@
       <form
         action="/register"
         method="POST"
-        class="form-control mt-5 pb-4 px-5 rounded-4"
-        style="flex-basis: 45%"
+        class="form-control mt-5 pb-5 px-5 rounded-4"
+        style="flex-basis: 40%"
       >
-        <div class="my-3 text-center">
-          <h4>REGISTER YOUR ACCOUNT</h4>
+        <div class="my-4">
+          <h4 class="text-center">REGISTER YOUR ACCOUNT</h4>
+          {{if .FlashData}}
+          <div
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            <strong
+              >{{.FlashData}}
+              <a href="/form-login" class="alert-link">Login?</a></strong
+            >
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          {{end}}
         </div>
         <div class="mb-3">
           <label for="inputName"><b>Name:</b></label>
@@ -87,7 +104,7 @@
             required
           />
         </div>
-        <div class="mb-3">
+        <div class="mb-4">
           <label for="inputPassword"><b>Password:</b></label>
           <input
             type="password"
@@ -98,8 +115,8 @@
             required
           />
         </div>
-        <div class="d-lg-flex mt-4 justify-content-end">
-          <button class="btn btn-dark btn-sm" type="submit">submit</button>
+        <div class="d-grid">
+          <button class="btn btn-dark" type="submit">submit</button>
         </div>
       </form>
     </div>

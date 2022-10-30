@@ -75,14 +75,16 @@
       </div>
     </nav>
 
-    <main>
-      <!-- {{.Id}} -->
-      <div class="container mt-5">
-        <h4 class="text-center mb-3">{{.Blog.Title}}</h4>
+    <main class="container">
+      <div class="my-5 px-3 pb-3 bg-light rounded-4">
+        <h4 class="text-center py-3 my-3" style="border-bottom: 2px solid #ddd">
+          {{.Blog.Title}}
+        </h4>
         <div class="d-lg-flex justify-content-center gap-5">
           <div class="d-lg-flex flex-grow-1">
             <img
-              src="../public/img/work-unsplash.jpg"
+              class="img-fluid rounded-2"
+              src="../uploads/{{.Blog.Images}}"
               alt="images"
               style="width: 100%; height: 17.5em; object-fit: cover"
             />
@@ -101,21 +103,34 @@
             <div class="mt-4">
               <h6 class="mb-2">Technologies</h6>
               <div>
+                {{if eq (index .Blog.Technologies 2) "reactjs"}}
                 <i class="fa-brands fa-react"></i>
                 <span style="margin: 5px">React Js</span>
+                {{end}}
+                <span></span>
+                {{if eq (index .Blog.Technologies 3) "typescript"}}
                 <i class="fa-brands fa-square-js"></i>
-                <span style="margin: 5px">JavaScript</span>
+                <span style="margin: 5px">Typescript</span>
+                {{end}}
               </div>
               <div>
+                {{if eq (index .Blog.Technologies 0) "nodejs"}}
                 <i class="fa-brands fa-node-js"></i>
                 <span style="margin: 7px">Node Js</span>
+                {{end}}
+                <span></span>
+                {{if eq (index .Blog.Technologies 1) "nextjs"}}
                 <i class="fa-solid fa-circle-info"></i>
-                <span style="margin: 5px">Socket IO</span>
+                <span style="margin: 5px">Next Js</span>
+                {{end}}
               </div>
             </div>
           </div>
         </div>
-        <div class="my-5" style="text-align: justify">
+        <div
+          class="mt-4 pt-3"
+          style="text-align: justify; border-top: 2px solid #ddd"
+        >
           <p>{{.Blog.Content}}</p>
         </div>
       </div>

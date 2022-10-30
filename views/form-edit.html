@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {{if .IsLogin}}
+    {{if .Data.IsLogin}}
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +15,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../public/css/style.css" />
-    <title>Add Project</title>
+    <title>Form Edit</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-light shadow-sm">
@@ -45,12 +45,12 @@
               <a class="nav-link" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Add Project</a>
+              <a class="nav-link" href="/blog">Add Project</a>
             </li>
           </ul>
           <ul class="navbar-nav mb-2 mb-lg-0 me-2">
-            {{if .IsLogin}}
-            <li class="nav-item navbar-brand">Hello, {{.UserName}}</li>
+            {{if .Data.IsLogin}}
+            <li class="nav-item navbar-brand">Hello, {{.Data.UserName}}</li>
             <li class="nav-item">
               <a class="nav-link" href="/logout">Logout</a>
             </li>
@@ -68,42 +68,25 @@
       </div>
     </nav>
 
-    {{if .IsLogin}}
-    <div class="container d-lg-flex justify-content-center my-4">
+    <div class="container d-lg-flex justify-content-center my-5">
       <form
-        action="/process"
+        action="/updated/{{.Blogs.Id}}"
         method="POST"
         class="form-control pb-5 px-5 rounded-4"
         style="flex-basis: 50%"
         enctype="multipart/form-data"
       >
         <div class="my-3">
-          <h4 class="text-center">ADD MY PROJECT</h4>
-          {{if .FlashData}}
-          <div
-            class="alert alert-success alert-dismissible fade show"
-            role="alert"
-          >
-            <strong
-              >{{.FlashData}} <a href="/" class="alert-link">Lihat?</a></strong
-            >
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="alert"
-              aria-label="Close"
-            ></button>
-          </div>
-          {{end}}
+          <h4 class="text-center">EDIT MY PROJECT</h4>
         </div>
         <div class="mb-3">
-          <label for="inputTitle"><b>Project Name:</b></label>
+          <label for="inputTitle" class="fw-bold">Project Name:</label>
           <input
             type="text"
-            class="form-control text-capitalize"
+            class="form-control"
             id="inputTitle"
             name="inputTitle"
-            placeholder="Dumbways Web App"
+            placeholder="{{.Blogs.Title}}"
             required
           />
         </div>
@@ -116,6 +99,8 @@
               class="form-control"
               id="inputStart"
               name="inputStart"
+              value="{{.Blogs.SFormat_date}}"
+              required
             />
           </div>
           <div class="col-md">
@@ -125,21 +110,25 @@
               class="form-control"
               id="inputEnd"
               name="inputEnd"
+              value="{{.Blogs.EFormat_date}}"
+              required
             />
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="inputContent"><b>Description:</b></label>
+          <label for="inputContent" class="fw-bold">Description:</label>
           <textarea
             class="form-control"
-            id="inputContent"
             name="inputContent"
-            rows="4"
+            id="inputContent"
+            rows="3"
             style="resize: none"
-            placeholder="Your description.."
+            placeholder="{{.Blogs.Content}}"
+            required
           ></textarea>
         </div>
+
         <div class="d-block">
           <p class="form-label"><b>Technologies:</b></p>
           <div class="form-check form-check-inline">
@@ -149,6 +138,7 @@
               id="nodejs"
               value="nodejs"
               name="nodejs"
+              disabled
             />
             <label class="form-check-label" for="nodejs">Node Js&nbsp;</label>
           </div>
@@ -159,6 +149,7 @@
               id="nextjs"
               value="nextjs"
               name="nextjs"
+              disabled
             />
             <label class="form-check-label" for="nextjs">Next Js</label>
           </div>
@@ -171,6 +162,7 @@
                 id="reactjs"
                 value="reactjs"
                 name="reactjs"
+                disabled
               />
               <label class="form-check-label" for="reactjs">React Js</label>
             </div>
@@ -181,6 +173,7 @@
                 id="typescript"
                 value="typescript"
                 name="typescript"
+                disabled
               />
               <label class="form-check-label" for="typescript"
                 >Typescript</label
@@ -188,6 +181,7 @@
             </div>
           </div>
         </div>
+
         <div class="my-3">
           <label for="input-image"><b>Upload Images</b></label>
           <input
@@ -197,33 +191,16 @@
             name="input-image"
           />
         </div>
+
         <div class="d-grid">
-          <button class="btn btn-dark" type="submit">submit</button>
+          <button class="btn btn-dark btn-sm" type="submit">submit</button>
         </div>
       </form>
     </div>
-    {{else}}
-    <div
-      class="container mt-5 alert alert-warning align-items-center"
-      role="alert"
-    >
-      <span>
-        <a href="/form-login" class="text-decoration-none text-success"
-          >Login</a
-        >
-        dulu bang.. or
-        <a href="/form-register" class="text-decoration-none text-danger"
-          >Register</a
-        >
-        new accounts...
-      </span>
-    </div>
-    {{end}}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="./public/js/blog.js"></script> -->
   </body>
 </html>
